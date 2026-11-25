@@ -739,3 +739,127 @@ body.dark-theme .service-title p,
 body.dark-mode .service-title p {
   color: #e2e8f0 !important;
 }
+
+/* =====================================================================
+   COMPLETE SECTION BACKGROUNDS & TYPOGRAPHY CONTRAST (ABOUT, WORKING, CARDS)
+   ===================================================================== */
+
+/* 1. About Section: hilangkan background gambar putih about-bg.png pada Dark Mode */
+[data-theme="dark"] .about-section .about-content::before,
+body.dark-theme .about-section .about-content::before,
+body.dark-mode .about-section .about-content::before {
+  display: none !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+[data-theme="dark"] .about-section .about-content .text,
+body.dark-theme .about-section .about-content .text,
+body.dark-mode .about-section .about-content .text {
+  color: #7dd3fc !important;
+}
+
+[data-theme="dark"] .about-section .about-content .title,
+[data-theme="dark"] .about-section .about-content h4,
+body.dark-theme .about-section .about-content .title,
+body.dark-theme .about-section .about-content h4,
+body.dark-mode .about-section .about-content .title,
+body.dark-mode .about-section .about-content h4 {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .about-section .about-content p,
+[data-theme="dark"] .about-section .about-content p strong,
+body.dark-theme .about-section .about-content p,
+body.dark-theme .about-section .about-content p strong,
+body.dark-mode .about-section .about-content p,
+body.dark-mode .about-section .about-content p strong {
+  color: #e2e8f0 !important;
+}
+
+/* 2. Working Section: bersihkan working-bg.jpg gelap agar konsisten di Light & Dark Mode */
+[data-theme="light"] .working-section,
+body:not(.dark-theme):not(.dark-mode) .working-section {
+  background: var(--bg-secondary) !important;
+  background-image: none !important;
+}
+
+[data-theme="light"] .working-section::before,
+body:not(.dark-theme):not(.dark-mode) .working-section::before,
+[data-theme="dark"] .working-section::before,
+body.dark-theme .working-section::before,
+body.dark-mode .working-section::before {
+  display: none !important;
+}
+
+.working-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+[data-theme="dark"] .working-section,
+body.dark-theme .working-section,
+body.dark-mode .working-section {
+  background: #0b1120 !important;
+  background-image: none !important;
+}
+
+[data-theme="dark"] .working-section .section-title,
+[data-theme="dark"] .working-section h4,
+[data-theme="dark"] .working-section h4 a,
+body.dark-theme .working-section .section-title,
+body.dark-theme .working-section h4,
+body.dark-mode .working-section h4 {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .working-section p,
+[data-theme="dark"] .working-section .text,
+body.dark-theme .working-section p,
+body.dark-theme .working-section .text,
+body.dark-mode .working-section p {
+  color: #cbd5e1 !important;
+}
+
+/* 3. Catagory, Choose, Team, Testimonial, News & Buttons Dark Mode */
+[data-theme="dark"] .catagory-section .catagory-content h3,
+[data-theme="dark"] .catagory-section .catagory-content h3 a,
+[data-theme="dark"] .choose-section .single-item h4,
+[data-theme="dark"] .choose-section .single-item h4 a,
+[data-theme="dark"] .team-section .single-item h4,
+[data-theme="dark"] .team-section .single-item h4 a,
+[data-theme="dark"] .testimonial-faq-section .testimonial-autor h4,
+body.dark-theme .catagory-section .catagory-content h3,
+body.dark-theme .choose-section .single-item h4,
+body.dark-theme .team-section .single-item h4,
+body.dark-theme .testimonial-faq-section .testimonial-autor h4 {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .catagory-section .catagory-content p,
+[data-theme="dark"] .choose-section .single-item p,
+[data-theme="dark"] .team-section .single-item .text,
+[data-theme="dark"] .testimonial-faq-section .testimonial-autor span,
+[data-theme="dark"] .testimonial-faq-section .testimonial-content p,
+body.dark-theme .catagory-section .catagory-content p,
+body.dark-theme .choose-section .single-item p,
+body.dark-theme .team-section .single-item .text,
+body.dark-theme .testimonial-faq-section .testimonial-autor span,
+body.dark-theme .testimonial-faq-section .testimonial-content p {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .btn-style-two,
+body.dark-theme .btn-style-two,
+body.dark-mode .btn-style-two {
+  color: #f8fafc !important;
+  border-color: #7dd3fc !important;
+  background-color: transparent !important;
+}
+
+[data-theme="dark"] .btn-style-two:hover,
+body.dark-theme .btn-style-two:hover,
+body.dark-mode .btn-style-two:hover {
+  background-color: #7dd3fc !important;
+  color: #0b1120 !important;
+}
