@@ -682,3 +682,60 @@ body.dark-theme #themeToggleBtn {
     right: 19px;
   }
 }
+
+/* =====================================================================
+   SERVICE SECTION & HEADER CONTRAST FIX (LIGHT & DARK MODE)
+   ===================================================================== */
+[data-theme="light"] .service-section,
+body:not(.dark-theme):not(.dark-mode) .service-section {
+  background: var(--bg-secondary) !important;
+  background-image: none !important;
+}
+
+[data-theme="light"] .service-section::before,
+body:not(.dark-theme):not(.dark-mode) .service-section::before,
+[data-theme="dark"] .service-section::before,
+body.dark-theme .service-section::before,
+body.dark-mode .service-section::before {
+  display: none !important;
+}
+
+.service-section .container,
+.service-title {
+  position: relative;
+  z-index: 2;
+}
+
+[data-theme="light"] .service-section .section-title,
+[data-theme="light"] .service-title .section-title,
+body:not(.dark-theme):not(.dark-mode) .service-section .section-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .service-section .service-title p,
+[data-theme="light"] .service-title p,
+body:not(.dark-theme):not(.dark-mode) .service-title p {
+  color: #334155 !important;
+}
+
+[data-theme="dark"] .service-section,
+body.dark-theme .service-section,
+body.dark-mode .service-section {
+  background: #0b1120 !important;
+  background-image: none !important;
+}
+
+[data-theme="dark"] .service-section .section-title,
+[data-theme="dark"] .service-title .section-title,
+body.dark-theme .service-section .section-title,
+body.dark-mode .service-section .section-title {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .service-section .service-title p,
+[data-theme="dark"] .service-title p,
+body.dark-theme .service-section .service-title p,
+body.dark-theme .service-title p,
+body.dark-mode .service-title p {
+  color: #e2e8f0 !important;
+}
