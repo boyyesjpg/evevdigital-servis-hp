@@ -1,179 +1,684 @@
 /* =====================================================================
-   EvEvDigital Dual Theme Engine (Dark & Light Mode) - Sektor 10 Servis HP
+   EvEvDigital Dual Theme Engine (Dark & Light Mode) — WCAG AAA (> 7:1)
+   Sektor 10: Konter Pulsa, Aksesoris & Servis HP/Gadget (evevservis)
    ===================================================================== */
 
 :root {
-  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-/* Light Mode (Default) */
-[data-theme="light"], body:not([data-theme="dark"]) {
+  --theme-transition: background-color 0.28s ease, color 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
   --bg-primary: #ffffff;
   --bg-secondary: #f8fafc;
-  --bg-card: #ffffff;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --border-color: #e2e8f0;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
   --header-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-body: #1e293b;
+  --text-muted: #334155;
+  --accent-primary: #075985;
+  --accent-hover: #0c4a6e;
+  --border-color: #cbd5e1;
+  --badge-bg: #e0f2fe;
+  --badge-text: #0c4a6e;
+  --meta-bg: #f0fdfa;
+  --meta-text: #115e59;
+  --rating-color: #92400e;
+  --input-bg: #ffffff;
+  --input-border: #64748b;
+  --input-text: #0f172a;
+  --input-placeholder: #334155;
+  --wa-bg: #166534;
+  --wa-hover: #14532d;
+  --wa-text: #ffffff;
 }
 
-/* Dark Mode */
-[data-theme="dark"] {
-  --bg-primary: #0b0f19;
+/* Anti-FOUC: nonaktifkan transisi saat initial paint */
+.no-theme-transition,
+.no-theme-transition *,
+.no-theme-transition *::before,
+.no-theme-transition *::after {
+  transition: none !important;
+}
+
+/* Transisi mulus saat user menekan tombol Dark/Light Mode */
+html,
+body,
+.page-wrapper,
+.main-header,
+.header-upper,
+.outer-area,
+.header-lower,
+.sticky-header,
+section,
+.evev-service-card,
+.evev-product-card,
+.evev-promo-card,
+.evev-b2b-card,
+.evev-benefit-box,
+.single-item,
+.accordion,
+.acc-btn,
+.acc-content,
+.sidebar,
+input,
+textarea,
+select {
+  transition: var(--theme-transition);
+}
+
+/* =====================================================================
+   LIGHT MODE HIGH-CONTRAST BASE (Rasio > 7:1)
+   ===================================================================== */
+[data-theme="light"] body,
+body:not(.dark-theme):not(.dark-mode) {
+  background-color: var(--bg-primary);
+  color: var(--text-body);
+}
+
+[data-theme="light"] .about-section,
+[data-theme="light"] .catagory-section,
+[data-theme="light"] .choose-section,
+[data-theme="light"] .team-section,
+[data-theme="light"] .working-section,
+[data-theme="light"] .testimonial-faq-section,
+[data-theme="light"] .news-section,
+[data-theme="light"] .sidebar-page-container {
+  background-color: var(--bg-primary);
+  color: var(--text-body);
+}
+
+[data-theme="light"] .section-title,
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6 {
+  color: var(--text-main);
+}
+
+[data-theme="light"] p,
+[data-theme="light"] .text,
+[data-theme="light"] .acc-content p {
+  color: var(--text-muted);
+}
+
+/* Teks putih tajam di atas banner, counter, appointment & CTA berlatar gelap */
+.main-banner .banner-title h1,
+.main-banner .banner-title h2,
+.main-banner .text,
+.fact-counter .count-outer,
+.fact-counter .count-outer h1,
+.fact-counter .count-text,
+.fact-counter .text,
+.appointment-section .title,
+.appointment-section .section-title,
+.cta-section .cta-content .title,
+.cta-section .cta-content p {
+  color: #ffffff !important;
+}
+
+/* =====================================================================
+   DARK MODE OVERRIDES (Rasio > 7:1 WCAG AAA)
+   ===================================================================== */
+[data-theme="dark"],
+body.dark-theme,
+body.dark-mode {
+  --bg-primary: #0b1120;
   --bg-secondary: #111827;
-  --bg-card: #161e2e;
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
-  --border-color: #273549;
+  --bg-surface: #162033;
+  --bg-subtle: #1e293b;
   --header-bg: #0f172a;
+  --text-main: #f8fafc;
+  --text-body: #f1f5f9;
+  --text-muted: #cbd5e1;
+  --accent-primary: #7dd3fc;
+  --accent-hover: #bae6fd;
+  --border-color: #334155;
+  --badge-bg: #0c4a6e;
+  --badge-text: #e0f2fe;
+  --meta-bg: #134e4a;
+  --meta-text: #f0fdfa;
+  --rating-color: #fde68a;
+  --input-bg: #0f172a;
+  --input-border: #475569;
+  --input-text: #f8fafc;
+  --input-placeholder: #cbd5e1;
 }
 
-[data-theme="dark"] body {
-  background-color: var(--bg-primary) !important;
-  color: var(--text-main) !important;
+[data-theme="dark"],
+[data-theme="dark"] body,
+body.dark-theme,
+body.dark-mode {
+  background-color: #0b1120 !important;
+  color: #f1f5f9 !important;
 }
 
+[data-theme="dark"] .page-wrapper,
 [data-theme="dark"] .main-header,
 [data-theme="dark"] .header-upper,
+[data-theme="dark"] .outer-area,
 [data-theme="dark"] .header-lower,
-[data-theme="dark"] .outer-area {
-  background-color: var(--header-bg) !important;
-  border-color: var(--border-color) !important;
+[data-theme="dark"] .sticky-header,
+body.dark-theme .page-wrapper,
+body.dark-theme .main-header,
+body.dark-theme .header-upper,
+body.dark-theme .outer-area,
+body.dark-theme .header-lower,
+body.dark-theme .sticky-header {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
 }
 
 [data-theme="dark"] .about-section,
 [data-theme="dark"] .service-section,
 [data-theme="dark"] .catagory-section,
 [data-theme="dark"] .choose-section,
-[data-theme="dark"] .appointment-section,
 [data-theme="dark"] .team-section,
 [data-theme="dark"] .working-section,
 [data-theme="dark"] .testimonial-faq-section,
-[data-theme="dark"] .cta-section,
-[data-theme="dark"] .news-section {
-  background-color: var(--bg-primary) !important;
-  color: var(--text-main) !important;
+[data-theme="dark"] .news-section,
+[data-theme="dark"] .sidebar-page-container,
+[data-theme="dark"] .shop-page,
+[data-theme="dark"] .pricing-section,
+body.dark-theme .about-section,
+body.dark-theme .service-section,
+body.dark-theme .catagory-section,
+body.dark-theme .choose-section,
+body.dark-theme .team-section,
+body.dark-theme .working-section,
+body.dark-theme .testimonial-faq-section,
+body.dark-theme .news-section,
+body.dark-theme .sidebar-page-container,
+body.dark-theme .shop-page,
+body.dark-theme .pricing-section {
+  background-color: #0b1120 !important;
+  color: #f1f5f9 !important;
 }
 
-[data-theme="dark"] .single-service-box,
-[data-theme="dark"] .catagory-content,
-[data-theme="dark"] .choose-left,
-[data-theme="dark"] .choose-right,
-[data-theme="dark"] .single-item,
-[data-theme="dark"] .single-testimonial,
-[data-theme="dark"] .panel-default {
-  background-color: var(--bg-card) !important;
-  border-color: var(--border-color) !important;
-  color: var(--text-main) !important;
+[data-theme="dark"] .service-section.style-2,
+[data-theme="dark"] .pricing-section,
+body.dark-theme .service-section.style-2,
+body.dark-theme .pricing-section {
+  background-color: #111827 !important;
 }
 
-[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3,
-[data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6,
-[data-theme="dark"] .title, [data-theme="dark"] .sec-title h2 {
-  color: #ffffff !important;
+/* Permukaan kartu Dark Mode */
+[data-theme="dark"] .evev-service-card,
+[data-theme="dark"] .evev-product-card,
+[data-theme="dark"] .evev-promo-card,
+[data-theme="dark"] .evev-b2b-card,
+[data-theme="dark"] .evev-benefit-box,
+[data-theme="dark"] .catagory-section .single-item,
+[data-theme="dark"] .choose-section .single-item,
+[data-theme="dark"] .team-section .single-item,
+[data-theme="dark"] .news-section .single-item,
+[data-theme="dark"] .news-section .news-content,
+[data-theme="dark"] .testimonial-faq-section .testimonial-content,
+[data-theme="dark"] .accordion-box .accordion,
+[data-theme="dark"] .accordion-box .acc-btn,
+[data-theme="dark"] .accordion-box .acc-content,
+[data-theme="dark"] .sidebar .sidebar-category,
+[data-theme="dark"] .main-menu .navigation > li > ul,
+[data-theme="dark"] .more-option .search-box,
+body.dark-theme .evev-service-card,
+body.dark-theme .evev-product-card,
+body.dark-theme .evev-promo-card,
+body.dark-theme .evev-b2b-card,
+body.dark-theme .evev-benefit-box,
+body.dark-theme .catagory-section .single-item,
+body.dark-theme .choose-section .single-item,
+body.dark-theme .team-section .single-item,
+body.dark-theme .news-section .single-item,
+body.dark-theme .news-section .news-content,
+body.dark-theme .testimonial-faq-section .testimonial-content,
+body.dark-theme .accordion-box .accordion,
+body.dark-theme .accordion-box .acc-btn,
+body.dark-theme .accordion-box .acc-content,
+body.dark-theme .sidebar .sidebar-category,
+body.dark-theme .main-menu .navigation > li > ul,
+body.dark-theme .more-option .search-box {
+  background-color: #162033 !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35) !important;
 }
 
-[data-theme="dark"] p, [data-theme="dark"] .text {
-  color: var(--text-muted) !important;
+/* Tipografi & Link Dark Mode (Rasio > 10:1) */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6,
+[data-theme="dark"] .section-title,
+[data-theme="dark"] .sidebar-title,
+[data-theme="dark"] .about-content .title,
+[data-theme="dark"] .single-info .title,
+[data-theme="dark"] .single-info .text-phone,
+[data-theme="dark"] .main-menu .navigation > li > a,
+[data-theme="dark"] .main-menu .navigation > li > ul > li > a,
+[data-theme="dark"] .news-content .title a,
+[data-theme="dark"] .evev-service-card h3,
+[data-theme="dark"] .evev-product-card h3,
+[data-theme="dark"] .evev-product-card h3 a,
+[data-theme="dark"] .evev-promo-card h3,
+[data-theme="dark"] .evev-promo-card h3 a,
+[data-theme="dark"] .evev-b2b-card h3,
+[data-theme="dark"] .accordion-box .acc-btn,
+[data-theme="dark"] .testimonial-autor h4,
+[data-theme="dark"] .single-content h4,
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6,
+body.dark-theme .section-title,
+body.dark-theme .sidebar-title,
+body.dark-theme .main-menu .navigation > li > a,
+body.dark-theme .main-menu .navigation > li > ul > li > a,
+body.dark-theme .evev-service-card h3,
+body.dark-theme .evev-product-card h3,
+body.dark-theme .evev-product-card h3 a,
+body.dark-theme .evev-promo-card h3,
+body.dark-theme .evev-b2b-card h3,
+body.dark-theme .accordion-box .acc-btn {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] p,
+[data-theme="dark"] .text,
+[data-theme="dark"] .top-left .text,
+[data-theme="dark"] .top-right .text a,
+[data-theme="dark"] .single-info .text,
+[data-theme="dark"] .sidebar-category .list li a,
+[data-theme="dark"] .evev-benefit-box li,
+[data-theme="dark"] .evev-service-card p,
+[data-theme="dark"] .evev-product-card p,
+[data-theme="dark"] .evev-promo-card p,
+[data-theme="dark"] .evev-b2b-card li,
+[data-theme="dark"] .acc-content p,
+[data-theme="dark"] .testimonial-content p,
+[data-theme="dark"] .news-content .list li,
+[data-theme="dark"] .news-content .list li span,
+[data-theme="dark"] .working-section h4,
+body.dark-theme p,
+body.dark-theme .text,
+body.dark-theme .top-left .text,
+body.dark-theme .top-right .text a,
+body.dark-theme .sidebar-category .list li a,
+body.dark-theme .evev-service-card p,
+body.dark-theme .evev-product-card p,
+body.dark-theme .evev-promo-card p,
+body.dark-theme .evev-b2b-card li,
+body.dark-theme .acc-content p {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .sidebar-category .list li.active a,
+[data-theme="dark"] .sidebar-category .list li a:hover,
+[data-theme="dark"] .news-content > a,
+[data-theme="dark"] .about-content .text,
+body.dark-theme .sidebar-category .list li.active a,
+body.dark-theme .news-content > a {
+  color: #7dd3fc !important;
+}
+
+[data-theme="dark"] .evev-service-card .card-price,
+[data-theme="dark"] .evev-product-card .card-price,
+[data-theme="dark"] .evev-b2b-card .card-price,
+body.dark-theme .evev-service-card .card-price,
+body.dark-theme .evev-product-card .card-price,
+body.dark-theme .evev-b2b-card .card-price {
+  color: #7dd3fc !important;
+}
+
+[data-theme="dark"] .evev-service-card .card-badge,
+[data-theme="dark"] .evev-product-card .card-badge,
+[data-theme="dark"] .evev-promo-card .card-badge,
+[data-theme="dark"] .evev-b2b-card .card-badge,
+body.dark-theme .evev-service-card .card-badge,
+body.dark-theme .evev-product-card .card-badge,
+body.dark-theme .evev-promo-card .card-badge,
+body.dark-theme .evev-b2b-card .card-badge {
+  background-color: #0c4a6e !important;
+  color: #e0f2fe !important;
+}
+
+[data-theme="dark"] .evev-service-card .card-meta span,
+[data-theme="dark"] .evev-product-card .card-meta span,
+body.dark-theme .evev-service-card .card-meta span,
+body.dark-theme .evev-product-card .card-meta span {
+  background-color: #134e4a !important;
+  color: #f0fdfa !important;
+}
+
+[data-theme="dark"] .evev-product-card .card-rating,
+body.dark-theme .evev-product-card .card-rating {
+  color: #fde68a !important;
+}
+
+[data-theme="dark"] .more-option .seach-toggle,
+[data-theme="dark"] .btn-style-two,
+body.dark-theme .more-option .seach-toggle,
+body.dark-theme .btn-style-two {
+  color: #f8fafc !important;
+  border-color: #7dd3fc !important;
+}
+
+[data-theme="dark"] .default-form input,
+[data-theme="dark"] .default-form textarea,
+[data-theme="dark"] .default-form select,
+[data-theme="dark"] .search-box input,
+[data-theme="dark"] .sidbar-search input,
+body.dark-theme .default-form input,
+body.dark-theme .default-form textarea,
+body.dark-theme .default-form select,
+body.dark-theme .search-box input,
+body.dark-theme .sidbar-search input {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+  border: 1px solid #475569 !important;
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder,
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: #cbd5e1 !important;
+  opacity: 1 !important;
 }
 
 /* =====================================================================
-   EvEvDigital Standard Solid Footer (#070A0E)
+   KOMPONEN KARTU PRODUK, PROMO & LAYANAN SIMETRIS (LIGHT & DARK)
    ===================================================================== */
-.footer-section {
-  background-color: #070A0E !important;
-  color: #cbd5e1 !important;
+.evev-service-grid,
+.evev-product-grid,
+.evev-promo-grid,
+.evev-b2b-grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.evev-service-col,
+.evev-product-col,
+.evev-promo-col,
+.evev-b2b-col {
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 30px;
+}
+
+.evev-service-card,
+.evev-product-card,
+.evev-promo-card,
+.evev-b2b-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  text-align: left;
+}
+
+.evev-service-card .card-media,
+.evev-product-card .card-media,
+.evev-promo-card .card-media {
+  width: 100%;
+  height: 215px;
+  overflow: hidden;
+  background-color: var(--bg-subtle);
+}
+
+.evev-service-card .card-media img,
+.evev-product-card .card-media img,
+.evev-promo-card .card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.evev-service-card:hover .card-media img,
+.evev-product-card:hover .card-media img,
+.evev-promo-card:hover .card-media img {
+  transform: scale(1.04);
+}
+
+.evev-service-card .card-body,
+.evev-product-card .card-body,
+.evev-promo-card .card-body,
+.evev-b2b-card .card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 22px;
+  overflow: visible !important;
+  height: auto !important;
+}
+
+.card-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  background-color: var(--badge-bg);
+  color: var(--badge-text) !important;
+  margin-bottom: 10px;
+}
+
+.card-price {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--accent-primary) !important;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.card-rating {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--rating-color);
+  margin-bottom: 8px;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.card-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: var(--meta-bg);
+  color: var(--meta-text) !important;
+}
+
+.card-cta {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.card-cta a {
+  width: 100%;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: #075985;
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: background-color 0.25s ease;
+}
+
+.card-cta a:hover {
+  background-color: #0c4a6e;
+  color: #ffffff !important;
+}
+
+/* =====================================================================
+   SOLID HIGH-CONTRAST FOOTER (#070A0E) — WCAG AAA (> 13:1)
+   ===================================================================== */
+.footer-section,
+[data-theme="light"] .footer-section,
+[data-theme="dark"] .footer-section {
+  background-color: #070a0e !important;
+  color: #f1f5f9 !important;
   padding: 60px 0 20px 0 !important;
   border-top: 1px solid #1e293b !important;
 }
 
-.footer-section h1, .footer-section h2, .footer-section h3, 
-.footer-section h4, .footer-section h5, .footer-section h6,
-.footer-section .footer-title, .footer-section .widget-title {
+.footer-section h1,
+.footer-section h2,
+.footer-section h3,
+.footer-section h4,
+.footer-section h5,
+.footer-section h6,
+.footer-section .footer-title,
+.footer-section .widget-title {
   color: #ffffff !important;
   font-weight: 700 !important;
 }
 
-.footer-section p, .footer-section .text, .footer-section span,
-.footer-section li, .footer-section a {
+.footer-section p,
+.footer-section .text,
+.footer-section span,
+.footer-section li {
+  color: #f1f5f9 !important;
+  opacity: 1 !important;
+}
+
+.footer-section a {
   color: #cbd5e1 !important;
+  transition: color 0.2s ease;
 }
 
 .footer-section a:hover {
-  color: #60c5e4 !important;
+  color: #7dd3fc !important;
 }
 
 .footer-section .footer-bottom {
   background-color: #040608 !important;
   border-top: 1px solid #141b26 !important;
   padding: 20px 0 !important;
-  margin-top: 40px !important;
+  margin-top: 36px !important;
 }
 
-.footer-section .footer-bottom .text {
-  color: #94a3b8 !important;
-}
-
+.footer-section .footer-bottom p,
 .footer-section .footer-bottom span {
-  color: #ffffff !important;
-  font-weight: 600 !important;
+  color: #f1f5f9 !important;
 }
 
 /* =====================================================================
-   Floating WhatsApp Button
+   FLOATING WHATSAPP & THEME TOGGLE (CONTRAST > 7:1 AAA)
    ===================================================================== */
+.floating-wa-pill,
 .floating-wa-btn {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background-color: #25d366;
-  color: #ffffff !important;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 32px;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+  bottom: 24px;
+  right: 24px;
   z-index: 99999;
-  transition: all 0.3s ease;
+  background-color: var(--wa-bg);
+  color: var(--wa-text) !important;
+  padding: 12px 20px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 8px 24px rgba(22, 101, 52, 0.45);
   text-decoration: none !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
 }
 
+.floating-wa-pill:hover,
 .floating-wa-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+  background-color: var(--wa-hover);
   color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(20, 83, 45, 0.58);
 }
 
-/* Theme Toggle Button */
+.floating-wa-pill i,
+.floating-wa-btn i {
+  font-size: 21px;
+}
+
+#themeToggleBtn,
+#theme-toggle,
 .theme-toggle-btn {
-  background: #1e293b;
-  border: 1px solid #334155;
-  color: #f8fafc;
-  padding: 8px 14px;
-  border-radius: 20px;
+  position: fixed;
+  bottom: 84px;
+  right: 24px;
+  z-index: 99999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background-color: #075985;
+  color: #ffffff;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  justify-content: center;
+  font-size: 19px;
+  box-shadow: 0 6px 18px rgba(7, 89, 133, 0.35);
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
 
+[data-theme="dark"] #themeToggleBtn,
+[data-theme="dark"] #theme-toggle,
+[data-theme="dark"] .theme-toggle-btn,
+body.dark-theme #themeToggleBtn {
+  background-color: #7dd3fc;
+  color: #0b1120;
+  border-color: #bae6fd;
+  box-shadow: 0 6px 18px rgba(125, 211, 252, 0.35);
+}
+
+#themeToggleBtn:hover,
+#theme-toggle:hover,
 .theme-toggle-btn:hover {
-  background: #334155;
-  color: #60c5e4;
+  transform: scale(1.08);
 }
 
-[data-theme="light"] .theme-toggle-btn {
-  background: #f1f5f9;
-  border-color: #cbd5e1;
-  color: #1e293b;
-}
-
-[data-theme="light"] .theme-toggle-btn:hover {
-  background: #e2e8f0;
+@media (max-width: 575px) {
+  .floating-wa-pill span {
+    display: none;
+  }
+  .floating-wa-pill {
+    width: 54px;
+    height: 54px;
+    padding: 0;
+    justify-content: center;
+    bottom: 18px;
+    right: 16px;
+  }
+  #themeToggleBtn,
+  #theme-toggle {
+    bottom: 82px;
+    right: 19px;
+  }
 }
